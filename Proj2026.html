@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="Ray Kitayimbwa" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Welcome to the World of Ray Kitayimbwa</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to right, #dbeafe, #e0f2fe);
+        color: #0f172a;
+      }
+
+      header,
+      footer {
+        background-color: #0f2027;
+        color: white;
+        text-align: center;
+        padding: 25px;
+      }
+
+      .main-title {
+        font-size: 42px;
+        text-shadow: 2px 2px 8px black;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        margin: 10px;
+        font-weight: bold;
+      }
+
+      nav a:hover {
+        color: #bbf7d0;
+        text-decoration: underline;
+      }
+
+      section {
+        background-color: white;
+        max-width: 1000px;
+        margin: 25px auto;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      h2 {
+        color: #1d4ed8;
+        border-bottom: 3px solid #bbf7d0;
+        padding-bottom: 8px;
+      }
+
+      p {
+        line-height: 1.7;
+      }
+
+      .picture-viewer {
+        display: flex;
+        gap: 25px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .thumbnail-column {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .thumbnail-column img {
+        width: 130px;
+        height: 90px;
+        object-fit: cover;
+        border-radius: 10px;
+        cursor: pointer;
+        border: 3px solid #1d4ed8;
+        transition: 0.3s;
+      }
+
+      .thumbnail-column img:hover {
+        transform: scale(1.05);
+      }
+
+      .picture-viewer iframe {
+        width: 700px;
+        height: 400px;
+        border: 3px solid #1d4ed8;
+        border-radius: 12px;
+        background-color: white;
+      }
+
+      .media-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+      }
+
+      .media-card {
+        background-color: #f8fafc;
+        padding: 15px;
+        border-radius: 14px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      }
+
+      .media-card video {
+        width: 100%;
+        border-radius: 12px;
+      }
+
+      .media-card p {
+        font-weight: bold;
+      }
+
+      .youtube-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 720px;
+        margin: 25px auto;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        border-radius: 14px;
+      }
+
+      .youtube-wrapper iframe {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      .center-title,
+      .video-caption {
+        text-align: center;
+      }
+      .video-help {
+        text-align: center;
+      }
+
+      #socials {
+        text-align: center;
+      }
+
+      #socials a {
+        display: inline-block;
+        margin: 10px;
+        padding: 12px 22px;
+        border-radius: 10px;
+        background-color: #1d4ed8;
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        transition: 0.3s;
+      }
+
+      #socials a:hover {
+        background-color: #0f172a;
+        transform: scale(1.08);
+      }
+
+      #socials i {
+        margin-right: 8px;
+      }
+
+      .app {
+        background-color: #fef3c7;
+      }
+
+      input {
+        padding: 8px;
+        width: 220px;
+        border-radius: 6px;
+        border: 1px solid #94a3b8;
+      }
+
+      button {
+        padding: 10px 18px;
+        border: none;
+        border-radius: 6px;
+        background-color: #1d4ed8;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0f172a;
+      }
+
+      footer a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+      }
+    </style>
+
+    <script>
+      function calculateBill() {
+        let price = document.getElementById("price").value;
+        let tax = document.getElementById("tax").value;
+        let tip = document.getElementById("tip").value;
+
+        let total = Number(price) + (price * tax) / 100 + (price * tip) / 100;
+
+        document.getElementById("result").innerHTML =
+          "Total Bill: $" + total.toFixed(2);
+      }
+
+      function showPicture(imagePath) {
+        document.querySelector('iframe[name="pictureFrame"]').srcdoc = `
+          <html>
+            <body style="margin:0; display:flex; justify-content:center; align-items:center; background:white; height:100vh;">
+              <img src="${imagePath}" style="max-width:100%; max-height:100%; object-fit:contain;">
+            </body>
+          </html>
+        `;
+      }
+    </script>
+  </head>
+
+  <body id="top">
+    <header>
+      <h1 class="main-title">🌍 Welcome to the World of Ray Kitayimbwa 🌍</h1>
+
+      <nav>
+        <a href="#about">About Me</a>
+        <a href="#hobbies">Hobbies</a>
+        <a href="#pics">Pictures</a>
+        <a href="#video">Videos</a>
+        <a href="#career">Career</a>
+        <a href="#socials">Socials</a>
+        <a href="#app">JavaScript App</a>
+      </nav>
+    </header>
+
+    <section id="about">
+      <h2>About Me</h2>
+
+      <p>
+        Hi there! I’m Ray Kitayimbwa — a student, full-time professional,
+        technology enthusiast, and proud father of two.
+      </p>
+
+      <p>
+        My journey has been anything but traditional, and that’s what makes it
+        meaningful. Every challenge and opportunity has shaped my perspective,
+        strengthened my resilience, and fueled my ambition to keep growing.
+      </p>
+
+      <p>
+        Professionally, I come from a finance background, but I’m currently
+        pursuing a degree in Business and Information Technology while exploring
+        web development, artificial intelligence, and FinTech.
+      </p>
+
+      <p>
+        Above all, I’m a God-fearing man who believes strongly in faith,
+        purpose, and gratitude.
+      </p>
+    </section>
+
+    <section id="hobbies">
+      <h2>Hobbies & Interests</h2>
+
+      <p>
+        Outside of work and school, I value family, sports, travel, music,
+        photography, and meaningful experiences.
+      </p>
+
+      <p>
+        I have coached my two children in soccer and flag football, which has
+        been one of the most rewarding experiences of my life.
+      </p>
+
+      <p>
+        I was also honored to be selected as a volunteer for the
+        <strong>2026 FIFA World Cup</strong>, an opportunity I’m incredibly
+        excited about because it represents teamwork, culture, and global
+        connection.
+      </p>
+    </section>
+
+    <section id="pics">
+      <h2>Pictures</h2>
+
+      <div class="picture-viewer">
+        <div class="thumbnail-column">
+          <img
+            src="images/Fifa_0317.jpeg"
+            alt="FIFA volunteer moment"
+            onclick="showPicture('images/Fifa_0317.jpeg')"
+          />
+
+          <img
+            src="images/Trophy_0305.jpeg"
+            alt="Trophy picture"
+            onclick="showPicture('images/Trophy_0305.jpeg')"
+          />
+
+          <img
+            src="images/Promote Inclusivity.jpeg"
+            alt="Promote inclusivity"
+            onclick="showPicture('images/Promote Inclusivity.jpeg')"
+          />
+        </div>
+
+        <iframe
+          name="pictureFrame"
+          title="Large picture display"
+          srcdoc='
+            <html>
+              <body style="margin:0; display:flex; justify-content:center; align-items:center; background:white; height:100vh;">
+                <img src="images/Fifa_0317.jpeg" style="max-width:100%; max-height:100%; object-fit:contain;">
+              </body>
+            </html>
+          '
+        >
+        </iframe>
+      </div>
+    </section>
+
+    <section id="video">
+      <h2>Videos</h2>
+
+      <div class="media-grid">
+        <div class="media-card">
+          <video controls>
+            <source src="images/347325.mp4" type="video/mp4" />
+            Your browser does not support this video.
+          </video>
+          <p>Skyline View</p>
+        </div>
+
+        <div class="media-card">
+          <video controls>
+            <source src="images/underwater.mp4" type="video/mp4" />
+            Your browser does not support this video.
+          </video>
+          <p>Ocean View</p>
+        </div>
+      </div>
+
+      <h3 class="center-title">Tech Inspiration</h3>
+
+      <div class="youtube-wrapper">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/hdI2bqOjy3c"
+          title="JavaScript Crash Course"
+          allowfullscreen
+        >
+        </iframe>
+      </div>
+
+      <p class="video-caption">JavaScript Crash Course For Beginners</p>
+      <p class="video-help">
+        If the video does not load inside the page,
+        <a
+          href="https://www.youtube.com/watch?v=hdI2bqOjy3c"
+          target="_blank"
+          rel="noopener"
+          >open it on YouTube</a
+        >.
+      </p>
+    </section>
+
+    <section id="career">
+      <h2>Career Aspirations</h2>
+
+      <p>
+        I currently work in finance, where I have developed strong analytical,
+        problem-solving, and client-focused skills.
+      </p>
+
+      <p>
+        My long-term goal is to transition into technology and FinTech, where I
+        can combine financial knowledge with technical skills to create
+        innovative and impactful solutions.
+      </p>
+
+      <p>
+        I want to build a career that allows me to continuously learn, grow, and
+        contribute to meaningful projects through technology.
+      </p>
+    </section>
+
+    <section id="socials">
+      <h2>Connect With Me</h2>
+
+      <a href="https://facebook.com/yourname" target="_blank">
+        <i class="fa-brands fa-facebook"></i> Facebook
+      </a>
+
+      <a href="https://instagram.com/yourname" target="_blank">
+        <i class="fa-brands fa-instagram"></i> Instagram
+      </a>
+    </section>
+
+    <section id="app" class="app">
+      <h2>Campus Dunkin Bill Calculator</h2>
+
+      <label>Meal Price:</label><br />
+      <input type="number" id="price" /><br /><br />
+
+      <label>Tax %:</label><br />
+      <input type="number" id="tax" /><br /><br />
+
+      <label>Tip %:</label><br />
+      <input type="number" id="tip" /><br /><br />
+
+      <button onclick="calculateBill()">Calculate</button>
+
+      <p id="result"></p>
+    </section>
+
+    <footer>
+      <a href="#top">Back to Top</a>
+    </footer>
+  </body>
+</html>
